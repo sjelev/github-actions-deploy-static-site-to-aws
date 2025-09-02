@@ -201,7 +201,8 @@ resource "aws_cloudfront_distribution" "cdn_static_site_default_cert" {
 resource "aws_cloudfront_distribution" "cdn_static_site" {
   count               = var.aws_site_cdn_enabled ? ( local.cert_available ? 1 : 0 ) : 0
   enabled             = true
-  is_ipv6_enabled     = true
+#   is_ipv6_enabled     = true
+  is_ipv6_enabled     = false
   default_root_object = var.aws_site_root_object 
   comment             = "CDN for ${local.s3_bucket_name}"
 
