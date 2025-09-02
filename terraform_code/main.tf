@@ -1,4 +1,4 @@
-### Site Bucket
+### Site Bucket 
 ## Main bucket
 resource "aws_s3_bucket" "aws_site_website_bucket" {
   bucket = local.s3_bucket_name
