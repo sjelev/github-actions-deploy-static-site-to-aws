@@ -152,7 +152,7 @@ resource "aws_cloudfront_distribution" "cdn_static_site_default_cert" {
   origin {
     domain_name              = aws_s3_bucket.aws_site_website_bucket.bucket_regional_domain_name
     origin_id                = "aws_site_bucket_origin"
-    origin_access_control_id = aws_cloudfront_origin_access_control.default[0].id
+#     origin_access_control_id = aws_cloudfront_origin_access_control.default[0].id
   }
 
   default_cache_behavior {
@@ -208,7 +208,7 @@ resource "aws_cloudfront_distribution" "cdn_static_site" {
   origin {
     domain_name              = aws_s3_bucket.aws_site_website_bucket.bucket_regional_domain_name
     origin_id                = "aws_site_bucket_origin"
-    origin_access_control_id = aws_cloudfront_origin_access_control.default[0].id
+#     origin_access_control_id = aws_cloudfront_origin_access_control.default[0].id
   }
 
   default_cache_behavior {
@@ -271,15 +271,15 @@ locals {
 }
 
 
-### CDN Access control
-resource "aws_cloudfront_origin_access_control" "default" {
-  count                             = var.aws_site_cdn_enabled ? 1 : 0
-  name                              = "${local.s3_bucket_name}"
-  description                       = "Cloudfront OAC for ${local.s3_bucket_name} - ${var.aws_resource_identifier}"
-  origin_access_control_origin_type = "s3"
-  signing_behavior                  = "always"
-  signing_protocol                  = "sigv4"
-}
+# ### CDN Access control
+# resource "aws_cloudfront_origin_access_control" "default" {
+#   count                             = var.aws_site_cdn_enabled ? 1 : 0
+#   name                              = "${local.s3_bucket_name}"
+#   description                       = "Cloudfront OAC for ${local.s3_bucket_name} - ${var.aws_resource_identifier}"
+#   origin_access_control_origin_type = "s3"
+#   signing_behavior                  = "always"
+#   signing_protocol                  = "sigv4"
+# }
 
 ##### ALL DNS
 
