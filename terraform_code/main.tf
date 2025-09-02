@@ -442,7 +442,7 @@ locals {
 
   ### Try looking up for the cert with different names
   # acm_arn = try(data.aws_acm_certificate.issued["domain"].arn, try(data.aws_acm_certificate.issued["wildcard"].arn, data.aws_acm_certificate.issued["sub"].arn, ""))
-  acm_arn = try(data.aws_iam_server_certificate.issued.arn, ""))
+  acm_arn = try(data.aws_iam_server_certificate.issued.arn, "")
 
   ### Amazon buckets have a limit of 63 chars. 
   ### IF we are hosting a site with a DNS name and without CDN, bucket name *MUST* match DNS name. Hence the 63 chars limit.
